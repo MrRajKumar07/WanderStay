@@ -2,12 +2,13 @@ package com.l2p.WanderStay.service;
 
 import com.l2p.WanderStay.dto.*;
 import com.l2p.WanderStay.entity.Hotel;
+import com.l2p.WanderStay.exception.ResourceNotFoundException;
 import com.l2p.WanderStay.mapper.HotelMapper;
 import com.l2p.WanderStay.repository.HotelRepository;
-import com.l2p.WanderStay.service.HotelService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -16,7 +17,6 @@ public class HotelServiceImpl implements HotelService {
     private final HotelRepository repository;
     private final HotelMapper mapper;
 
-    // 🔍 Search hotels
     @Override
     public Page<HotelDTO> search(String location, Pageable pageable) {
 
@@ -30,89 +30,59 @@ public class HotelServiceImpl implements HotelService {
                 .map(mapper::toDTO);
     }
 
-    // 📄 Get by ID
     @Override
     public HotelDTO getById(Long id) {
 
         Hotel hotel = repository.findById(id)
                 .filter(Hotel::isActive)
-                .orElseThrow(() -> new RuntimeException("Hotel not found with id: " + id));
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Hotel not found with id: " + id));
 
         return mapper.toDTO(hotel);
     }
 
-    // 📋 Get all hotels
     @Override
-    public Page<HotelDTO> getAll(Pageable pageable) {
-        return repository.findByIsActiveTrue(pageable)
-                .map(mapper::toDTO);
-    }
-
-    // ➕ Create hotel
-    @Override
+    @Transactional
     public HotelDTO create(CreateHotelRequest request) {
 
         Hotel hotel = mapper.toEntity(request);
-
-        if (hotel.getRating() == null) {
-            hotel.setRating(0.0);
-        }
-
+        hotel.setRating(0.0);
         hotel.setActive(true);
 
         return mapper.toDTO(repository.save(hotel));
     }
 
-    // ✏️ Update hotel
     @Override
+    @Transactional
     public HotelDTO update(Long id, UpdateHotelRequest request) {
 
         Hotel hotel = repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Hotel not found with id: " + id));
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Hotel not found with id: " + id));
 
         if (!hotel.isActive()) {
-            throw new RuntimeException("Cannot update inactive hotel");
+            throw new IllegalStateException("Cannot update inactive hotel");
         }
 
-        if (request.getName() != null && !request.getName().isBlank()) {
-            hotel.setName(request.getName());
-        }
-
-        if (request.getLocation() != null && !request.getLocation().isBlank()) {
-            hotel.setLocation(request.getLocation());
-        }
-
-        if (request.getDescription() != null) {
-            hotel.setDescription(request.getDescription());
-        }
-
-        if (request.getImageUrl() != null) {
-            hotel.setImageUrl(request.getImageUrl());
-        }
-
-        if (request.getAmenities() != null) {
-            hotel.setAmenities(request.getAmenities());
-        }
-
-        if (request.getIsActive() != null) {
-            hotel.setActive(request.getIsActive());
-        }
+        mapper.updateHotel(request, hotel);
 
         return mapper.toDTO(repository.save(hotel));
     }
 
-    // ❌ Soft delete
     @Override
+    @Transactional
     public void delete(Long id) {
 
         Hotel hotel = repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Hotel not found with id: " + id));
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Hotel not found with id: " + id));
 
         if (!hotel.isActive()) {
-            throw new RuntimeException("Hotel already inactive");
+            throw new IllegalStateException("Hotel already inactive");
         }
 
         hotel.setActive(false);
+
         repository.save(hotel);
     }
 }
