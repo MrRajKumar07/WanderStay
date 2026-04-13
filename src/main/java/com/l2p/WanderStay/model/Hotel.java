@@ -1,4 +1,4 @@
-package com.l2p.WanderStay.entity;
+package com.l2p.WanderStay.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;

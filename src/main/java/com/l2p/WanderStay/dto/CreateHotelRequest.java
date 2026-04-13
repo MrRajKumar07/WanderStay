@@ -3,7 +3,11 @@ package com.l2p.WanderStay.dto;
 import jakarta.validation.constraints.*;
 import lombok.*;
 
-@Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class CreateHotelRequest {
 
     @NotBlank(message = "Hotel name is required")
@@ -24,18 +28,5 @@ public class CreateHotelRequest {
     private String imageUrl;
 
     @Size(max = 500, message = "Amenities too long")
-import jakarta.validation.constraints.NotBlank;
-import lombok.*;
-
-@Data @NoArgsConstructor @AllArgsConstructor
-public class CreateHotelRequest {
-    @NotBlank(message = "Hotel name is required")
-    private String name;
-
-    @NotBlank(message = "Location is required")
-    private String location;
-
-    private String description;
-    private String imageUrl;
-    private String amenities;
+    private String amenities;   // ✅ MISSING FIELD ADDED
 }

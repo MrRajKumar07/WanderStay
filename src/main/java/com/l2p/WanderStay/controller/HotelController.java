@@ -2,6 +2,7 @@ package com.l2p.WanderStay.controller;
 
 import com.hotelbooking.dto.*;
 import com.hotelbooking.service.HotelService;
+import com.l2p.WanderStay.dto.HotelDTO;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.*;

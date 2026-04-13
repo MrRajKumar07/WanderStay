@@ -1,12 +1,15 @@
 package com.l2p.WanderStay.mapper;
 
 import com.l2p.WanderStay.dto.*;
-import com.l2p.WanderStay.entity.Hotel;
+import com.l2p.WanderStay.model.Hotel;
 import org.mapstruct.*;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(
+        componentModel = "spring",
+        nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS
+)
 public interface HotelMapper {
 
     // 🔹 Entity → DTO

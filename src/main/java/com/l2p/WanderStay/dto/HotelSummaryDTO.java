@@ -9,9 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-import lombok.*;
 
-@Data @Builder @NoArgsConstructor @AllArgsConstructor
 public class HotelSummaryDTO {
     private Long id;
     private String name;
