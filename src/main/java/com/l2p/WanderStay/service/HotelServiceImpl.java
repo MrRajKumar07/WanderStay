@@ -1,7 +1,7 @@
 package com.l2p.WanderStay.service;
 
 import com.l2p.WanderStay.dto.*;
-import com.l2p.WanderStay.entity.Hotel;
+import com.l2p.WanderStay.model.Hotel;
 import com.l2p.WanderStay.exception.ResourceNotFoundException;
 import com.l2p.WanderStay.mapper.HotelMapper;
 import com.l2p.WanderStay.repository.HotelRepository;

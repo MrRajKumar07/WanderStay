@@ -3,6 +3,7 @@ package com.l2p.WanderStay.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
+import com.l2p.WanderStay.model.Hotel;
 
 import java.math.BigDecimal;
 import java.util.List;

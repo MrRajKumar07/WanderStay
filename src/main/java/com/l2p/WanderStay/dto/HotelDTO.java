@@ -2,15 +2,12 @@ package com.l2p.WanderStay.dto;
 
 import lombok.*;
 
-@Getter
-@Setter
+@Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 public class HotelDTO {
 
-@Data @Builder @NoArgsConstructor @AllArgsConstructor
-public class HotelDTO {
     private Long id;
     private String name;
     private String location;
