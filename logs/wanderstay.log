@@ -3415,3 +3415,55 @@ Caused by: org.springframework.util.PlaceholderResolutionException: Could not re
 2026-04-13T16:57:18.576+05:30  INFO 5256 --- [WanderStay] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8788 (http) with context path '/'
 2026-04-13T16:57:18.583+05:30  INFO 5256 --- [WanderStay] [restartedMain] c.l2p.WanderStay.WanderStayApplication   : Started WanderStayApplication in 16.789 seconds (process running for 3557.287)
 2026-04-13T16:57:18.586+05:30  INFO 5256 --- [WanderStay] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2026-04-13T17:08:40.196+05:30  INFO 5256 --- [WanderStay] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2026-04-13T17:08:40.223+05:30  INFO 5256 --- [WanderStay] [Thread-20] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-13T17:08:40.753+05:30  INFO 5256 --- [WanderStay] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2026-04-13T17:08:40.788+05:30  INFO 5256 --- [WanderStay] [Thread-20] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-13T17:08:40.795+05:30  INFO 5256 --- [WanderStay] [Thread-20] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown initiated...
+2026-04-13T17:08:43.690+05:30  INFO 5256 --- [WanderStay] [Thread-20] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown completed.
+2026-04-13T17:08:44.072+05:30  INFO 5256 --- [WanderStay] [restartedMain] c.l2p.WanderStay.WanderStayApplication   : Starting WanderStayApplication using Java 17.0.7 with PID 5256 (E:\WanderStay\target\classes started by Mr.Randhir in E:\WanderStay)
+2026-04-13T17:08:44.077+05:30 DEBUG 5256 --- [WanderStay] [restartedMain] c.l2p.WanderStay.WanderStayApplication   : Running with Spring Boot v3.5.13, Spring v6.2.17
+2026-04-13T17:08:44.083+05:30  INFO 5256 --- [WanderStay] [restartedMain] c.l2p.WanderStay.WanderStayApplication   : No active profile set, falling back to 1 default profile: "default"
+2026-04-13T17:08:45.276+05:30  INFO 5256 --- [WanderStay] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-13T17:08:45.335+05:30  INFO 5256 --- [WanderStay] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 55 ms. Found 5 JPA repository interfaces.
+2026-04-13T17:08:45.638+05:30  INFO 5256 --- [WanderStay] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8788 (http)
+2026-04-13T17:08:45.642+05:30  INFO 5256 --- [WanderStay] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-13T17:08:45.642+05:30  INFO 5256 --- [WanderStay] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.53]
+2026-04-13T17:08:45.790+05:30  INFO 5256 --- [WanderStay] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-04-13T17:08:45.794+05:30  INFO 5256 --- [WanderStay] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1704 ms
+2026-04-13T17:08:45.890+05:30  INFO 5256 --- [WanderStay] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Starting...
+2026-04-13T17:08:48.121+05:30  INFO 5256 --- [WanderStay] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-6 - Added connection org.postgresql.jdbc.PgConnection@4cc0524d
+2026-04-13T17:08:48.123+05:30  INFO 5256 --- [WanderStay] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Start completed.
+2026-04-13T17:08:49.559+05:30  INFO 5256 --- [WanderStay] [restartedMain] liquibase.database                       : Set default schema name to hpms
+2026-04-13T17:08:51.262+05:30  INFO 5256 --- [WanderStay] [restartedMain] liquibase.changelog                      : Reading from hpms.databasechangelog
+2026-04-13T17:08:53.539+05:30  INFO 5256 --- [WanderStay] [restartedMain] liquibase.ui                             : Database is up to date, no changesets to execute
+2026-04-13T17:08:53.828+05:30  INFO 5256 --- [WanderStay] [restartedMain] liquibase.changelog                      : Reading from hpms.databasechangelog
+2026-04-13T17:08:54.151+05:30  INFO 5256 --- [WanderStay] [restartedMain] liquibase.util                           : UPDATE SUMMARY
+2026-04-13T17:08:54.152+05:30  INFO 5256 --- [WanderStay] [restartedMain] liquibase.util                           : Run:                          0
+2026-04-13T17:08:54.153+05:30  INFO 5256 --- [WanderStay] [restartedMain] liquibase.util                           : Previously run:               5
+2026-04-13T17:08:54.154+05:30  INFO 5256 --- [WanderStay] [restartedMain] liquibase.util                           : Filtered out:                 0
+2026-04-13T17:08:54.155+05:30  INFO 5256 --- [WanderStay] [restartedMain] liquibase.util                           : -------------------------------
+2026-04-13T17:08:54.156+05:30  INFO 5256 --- [WanderStay] [restartedMain] liquibase.util                           : Total change sets:            5
+2026-04-13T17:08:54.157+05:30  INFO 5256 --- [WanderStay] [restartedMain] liquibase.util                           : Update summary generated
+2026-04-13T17:08:54.158+05:30  INFO 5256 --- [WanderStay] [restartedMain] liquibase.command                        : Command execution complete
+2026-04-13T17:08:56.092+05:30  INFO 5256 --- [WanderStay] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-13T17:08:56.119+05:30  INFO 5256 --- [WanderStay] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-04-13T17:08:56.187+05:30  INFO 5256 --- [WanderStay] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-13T17:08:56.192+05:30  WARN 5256 --- [WanderStay] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-13T17:08:56.794+05:30  INFO 5256 --- [WanderStay] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-6)']
+	Database driver: undefined/unknown
+	Database version: 18.3
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-13T17:08:57.252+05:30  INFO 5256 --- [WanderStay] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-13T17:08:58.343+05:30  INFO 5256 --- [WanderStay] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-13T17:08:58.549+05:30 DEBUG 5256 --- [WanderStay] [restartedMain] c.l2p.WanderStay.config.JwtAuthFilter    : Filter 'jwtAuthFilter' configured for use
+2026-04-13T17:08:58.583+05:30  INFO 5256 --- [WanderStay] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsService
+2026-04-13T17:08:58.858+05:30  WARN 5256 --- [WanderStay] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-13T17:08:59.291+05:30  INFO 5256 --- [WanderStay] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2026-04-13T17:08:59.361+05:30  INFO 5256 --- [WanderStay] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8788 (http) with context path '/'
+2026-04-13T17:08:59.368+05:30  INFO 5256 --- [WanderStay] [restartedMain] c.l2p.WanderStay.WanderStayApplication   : Started WanderStayApplication in 15.41 seconds (process running for 4258.072)
+2026-04-13T17:08:59.370+05:30  INFO 5256 --- [WanderStay] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
