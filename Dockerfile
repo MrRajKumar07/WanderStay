@@ -5,11 +5,12 @@ COPY . .
 RUN mvn clean package -DskipTests
 
 # Stage 2: Run the application
-FROM openjdk:17-jdk-slim
+# Use Eclipse Temurin (highly stable and replaces the old openjdk image)
+FROM eclipse-temurin:17-jdk-alpine
 WORKDIR /app
 
-# FIXED: Explicitly naming the source stage with '=' to avoid parse errors
+# Copy the jar from the build stage
 COPY --from=build /app/target/*.jar app.jar
 
-# Render uses a dynamic port, so we map it to Spring's server port
+# Render uses a dynamic port
 ENTRYPOINT ["sh", "-c", "java -Dserver.port=${PORT} -jar app.jar"]
