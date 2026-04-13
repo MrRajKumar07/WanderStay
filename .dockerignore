@@ -1,0 +1,24 @@
+# Build artifacts
+target/
+*.jar
+
+# IDE files
+.settings/
+.classpath
+.project
+.factorypath
+.vscode/
+.idea/
+bin/
+
+# Git
+.git
+.gitignore
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Documentation
+README.md
+HELP.md
