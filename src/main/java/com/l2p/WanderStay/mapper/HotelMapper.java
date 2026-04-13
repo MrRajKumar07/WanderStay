@@ -1,7 +1,7 @@
 package com.l2p.WanderStay.mapper;
 
 import com.l2p.WanderStay.dto.*;
-import com.l2p.WanderStay.model.Hotel;
+import com.l2p.WanderStay.entity.Hotel;
 import org.mapstruct.*;
 
 import java.util.List;
@@ -9,8 +9,10 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface HotelMapper {
 
+    // 🔹 Entity → DTO
     HotelDTO toDTO(Hotel hotel);
 
+    // 🔹 Entity → Summary DTO
     @Mapping(
             target = "roomCount",
             expression = "java(hotel.getRooms() != null ? hotel.getRooms().size() : 0)"
@@ -19,12 +21,14 @@ public interface HotelMapper {
 
     List<HotelSummaryDTO> toSummaryDTOList(List<Hotel> hotels);
 
+    // 🔹 Create → Entity
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "rooms", ignore = true)
     @Mapping(target = "rating", constant = "0.0")
-    @Mapping(target = "active", constant = "true")
+    @Mapping(target = "isActive", constant = "true")
     Hotel toEntity(CreateHotelRequest request);
 
+    // 🔹 Update existing entity
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "rooms", ignore = true)
