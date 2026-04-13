@@ -98,7 +98,6 @@
         <version>7.2.5</version>
         <type>pom</type>
     </dependency>
-        <!-- lookup parent from repository -->
     <dependency>
         <groupId>org.springdoc</groupId>
         <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
