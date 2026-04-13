@@ -5,16 +5,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 public interface HotelService {
-
-    Page<HotelDTO> search(String location, Pageable pageable);
-
-    HotelDTO getById(Long id);
-
-    Page<HotelDTO> getAll(Pageable pageable);
-
-    HotelDTO create(CreateHotelRequest request);
-
-    HotelDTO update(Long id, UpdateHotelRequest request);
-
-    void delete(Long id);
+    Page<HotelSummaryDTO> searchHotels(String location, Pageable pageable);
+    HotelDTO getHotelById(Long id);
+    HotelDTO createHotel(CreateHotelRequest request);
+    HotelDTO updateHotel(Long id, UpdateHotelRequest request);
+    void deleteHotel(Long id);
 }

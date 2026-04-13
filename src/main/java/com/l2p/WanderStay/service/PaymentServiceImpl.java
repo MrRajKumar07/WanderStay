@@ -1,4 +1,4 @@
-package com.l2p.WanderStay.service.impl;
+package com.l2p.WanderStay.service;
 
 import com.l2p.WanderStay.dto.PaymentRequest;
 import com.l2p.WanderStay.dto.PaymentResponse;
@@ -25,7 +25,6 @@ public class PaymentServiceImpl implements PaymentService {
         Booking booking = bookingRepository.findById(request.getBookingId())
                 .orElseThrow(() -> new RuntimeException("Booking not found"));
 
-        // OPTIONAL: validate amount matches booking total
         if (request.getAmount().compareTo(booking.getTotalAmount()) != 0) {
             throw new RuntimeException("Payment amount mismatch");
         }

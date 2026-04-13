@@ -5,9 +5,9 @@ import com.l2p.WanderStay.dto.BookingResponse;
 import com.l2p.WanderStay.mapper.BookingMapper;
 import com.l2p.WanderStay.model.*;
 import com.l2p.WanderStay.repository.*;
-import com.l2p.WanderStay.service.BookingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.time.temporal.ChronoUnit;
@@ -25,6 +25,7 @@ public class BookingServiceImpl implements BookingService {
     private final BookingMapper bookingMapper;
 
     @Override
+    @Transactional
     public BookingResponse create(BookingRequest request) {
 
         User user = userRepository.findById(request.getUserId())
@@ -33,20 +34,26 @@ public class BookingServiceImpl implements BookingService {
         Room room = roomRepository.findById(request.getRoomId())
                 .orElseThrow(() -> new RuntimeException("Room not found"));
 
-        long days = ChronoUnit.DAYS.between(
+        // Calculate number of nights
+        long nights = ChronoUnit.DAYS.between(
                 request.getCheckInDate(),
                 request.getCheckOutDate()
         );
 
+        if (nights <= 0) {
+            throw new RuntimeException("Check-out date must be after check-in date");
+        }
+
         BigDecimal total = room.getPricePerNight()
-                .multiply(BigDecimal.valueOf(days));
+                .multiply(BigDecimal.valueOf(nights));
 
         Booking booking = bookingMapper.toEntity(request);
         booking.setUser(user);
         booking.setRoom(room);
         booking.setStatus(BookingStatus.CONFIRMED);
         booking.setTotalAmount(total);
-        booking.setConfirmationNumber("CONF-" + UUID.randomUUID());
+        // Using substring to keep the confirmation number manageable
+        booking.setConfirmationNumber("CONF-" + UUID.randomUUID().toString().substring(0, 8).toUpperCase());
 
         return bookingMapper.toResponse(bookingRepository.save(booking));
     }
@@ -60,6 +67,7 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public List<BookingResponse> getByUser(UUID userId) {
+        // Ensure your repository method is named findByUser_Id or findByUserId
         return bookingRepository.findByUser_Id(userId)
                 .stream()
                 .map(bookingMapper::toResponse)
@@ -67,6 +75,7 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
+    @Transactional
     public void cancel(UUID id) {
         Booking booking = bookingRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Booking not found"));

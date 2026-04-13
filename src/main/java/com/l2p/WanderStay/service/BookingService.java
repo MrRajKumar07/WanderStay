@@ -1,9 +1,8 @@
 package com.l2p.WanderStay.service;
 
-import com.l2p.WanderStay.dto.*;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-
+import com.l2p.WanderStay.dto.BookingRequest;
+import com.l2p.WanderStay.dto.BookingResponse;
+import java.util.List;
 import java.util.UUID;
 
 public interface BookingService {
@@ -12,7 +11,7 @@ public interface BookingService {
 
     BookingResponse getById(UUID id);
 
-    Page<BookingSummaryDTO> getMyBookings(UUID userId, Pageable pageable);
+    List<BookingResponse> getByUser(UUID userId);
 
-    BookingResponse cancel(UUID id, String reason);
+    void cancel(UUID id);
 }

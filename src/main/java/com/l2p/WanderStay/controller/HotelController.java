@@ -1,43 +1,29 @@
 package com.l2p.WanderStay.controller;
 
-import com.hotelbooking.dto.*;
-import com.hotelbooking.service.HotelService;
-import jakarta.validation.Valid;
+import com.l2p.WanderStay.dto.*;
+import com.l2p.WanderStay.service.HotelService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.*;
-import org.springframework.http.*;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/hotels")
 @RequiredArgsConstructor
 public class HotelController {
-
-    private final HotelService service;
+    private final HotelService hotelService;
 
     @GetMapping
-    public ResponseEntity<Page<HotelDTO>> search(
-            @RequestParam String location,
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size
-    ) {
-        Pageable pageable = PageRequest.of(page, size);
-        return ResponseEntity.ok(service.search(location, pageable));
+    public ResponseEntity<Page<HotelSummaryDTO>> search(@RequestParam(defaultValue = "") String location, Pageable pageable) {
+        return ResponseEntity.ok(hotelService.searchHotels(location, pageable));
     }
-
+    @GetMapping("/{id}")
+    public ResponseEntity<HotelDTO> getById(@PathVariable Long id) {
+        return ResponseEntity.ok(hotelService.getHotelById(id));
+    }
     @PostMapping
-    public ResponseEntity<HotelDTO> create(
-            @Valid @RequestBody CreateHotelRequest request
-    ) {
-        return ResponseEntity.status(HttpStatus.CREATED)
-                .body(service.create(request));
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<HotelDTO> update(
-            @PathVariable Long id,
-            @Valid @RequestBody UpdateHotelRequest request
-    ) {
-        return ResponseEntity.ok(service.update(id, request));
+    public ResponseEntity<HotelDTO> create(@RequestBody CreateHotelRequest request) {
+        return ResponseEntity.ok(hotelService.createHotel(request));
     }
 }
