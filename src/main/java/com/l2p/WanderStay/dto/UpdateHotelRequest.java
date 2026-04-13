@@ -24,5 +24,16 @@ public class UpdateHotelRequest {
     @Size(max = 500, message = "Amenities too long")
     private String amenities;
 
+import lombok.*;
+
+@Data 
+@NoArgsConstructor 
+@AllArgsConstructor
+public class UpdateHotelRequest {
+    private String name;
+    private String location;
+    private String description;
+    private String imageUrl;
+    private String amenities;
     private Boolean isActive;
 }

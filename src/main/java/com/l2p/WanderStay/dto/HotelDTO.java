@@ -9,6 +9,8 @@ import lombok.*;
 @Builder
 public class HotelDTO {
 
+@Data @Builder @NoArgsConstructor @AllArgsConstructor
+public class HotelDTO {
     private Long id;
     private String name;
     private String location;

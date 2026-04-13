@@ -9,6 +9,9 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+import lombok.*;
+
+@Data @Builder @NoArgsConstructor @AllArgsConstructor
 public class HotelSummaryDTO {
     private Long id;
     private String name;
@@ -16,4 +19,7 @@ public class HotelSummaryDTO {
     private Double rating;
     private String imageUrl;
     private int roomCount;
+    private String imageUrl;
+    private Double rating;
+    private Integer roomCount;
 }
